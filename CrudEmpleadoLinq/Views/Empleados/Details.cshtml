@@ -1,0 +1,20 @@
+﻿@model Empleado
+
+<h1>Details Empleado</h1>
+
+    <a asp-controller="Empleados"
+    asp-action="Index"
+    class="btn btn-dark">
+    Back to list
+    </a>
+
+<ul class="list-group">
+    <li class="list-group-item">@Model.EMP_NO</li>
+    <li class="list-group-item">@Model.APELLIDO</li>
+    <li class="list-group-item">@Model.OFICIO</li>
+    <li class="list-group-item">@Model.DIR</li>
+    <li class="list-group-item">@Model.FECHA_ALT</li>
+    <li class="list-group-item">@Model.SALARIO</li>
+    <li class="list-group-item">@Model.COMISION</li>
+    <li class="list-group-item">@Model.DEPT_NO</li>
+</ul>

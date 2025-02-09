@@ -1,0 +1,44 @@
+﻿@model Empleado
+
+<h1>Edit Empleado</h1>
+<a asp-controller="Empleados"
+   asp-action="Index"
+   class="btn btn-dark">
+    Back to list
+</a>
+<form method="post">
+    <label>EMP NO: </label>
+    <input type="hidden" name="EMP_NO"
+           value="@Model.EMP_NO"
+           class="from form-control"
+           />
+    <label>APELLIDO: </label>
+    <input type="text" name="APELLIDO"
+           value="@Model.APELLIDO" 
+           class="from form-control" />
+    <label>OFICIO: </label>
+    <input type="text" name="OFICIO"
+           value="@Model.OFICIO" 
+           class="from form-control" />
+    <label>DIR: </label>
+    <input type="text" name="DIR"
+           value="@Model.DIR" 
+           class="from form-control" />
+    <label>FECHA_ALT: </label>
+    <input type="text" name="FECHA_ALT"
+           value="@Model.FECHA_ALT" 
+           class="from form-control" />
+    <label>SALARIO: </label>
+    <input type="text" name="SALARIO"
+           value="@Model.SALARIO" 
+           class="from form-control" />
+    <label>COMISION: </label>
+    <input type="text" name="COMISION"
+           value="@Model.COMISION" 
+           class="from form-control" />
+    <label>DEPT NO: </label>
+    <input type="text" name="DEPT_NO"
+           value="@Model.DEPT_NO" 
+           class="from form-control" />
+    <button class="btn btn-warning">Actualizar</button>
+</form>

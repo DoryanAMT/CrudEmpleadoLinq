@@ -1,0 +1,69 @@
+﻿@model List<Empleado>
+
+@{
+    List<string> oficios = ViewData["OFICIOS"] as List<string>;
+}
+
+<h1>Linq de Empleados</h1>
+
+<form method="post">
+    <select name="oficio" class="form form-control">
+        @foreach(string oficio in oficios){
+            <option value="@oficio">@oficio</option>
+        }
+    </select>
+    <button class="btn btn-primary">Filtrar</button>
+</form>
+
+
+@if(Model != null){
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>EMP_NO </th>
+                <th>APELLIDO </th>
+                <th>OFICIO </th>
+                <th>DIR </th>
+                <th>FECHA_ALT </th>
+                <th>SALARIO </th>
+                <th>COMISION </th>
+                <th>DEPT_NO </th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Empleado empleado in Model){
+                <tr>
+                    <td>@empleado.EMP_NO</td>
+                    <td>@empleado.APELLIDO</td>
+                    <td>@empleado.OFICIO</td>
+                    <td>@empleado.DIR</td>
+                    <td>@empleado.FECHA_ALT</td>
+                    <td>@empleado.SALARIO</td>
+                    <td>@empleado.COMISION</td>
+                    <td>@empleado.DEPT_NO</td>
+                    <td>
+                        <a asp-controller="Empleados"
+                        asp-action="Details"
+                        asp-route-empNo="@empleado.EMP_NO" 
+                        class="btn btn-info">
+                        Details
+                        </a>
+                        <a asp-controller="Empleados"
+                           asp-action="Update"
+                           asp-route-empNo="@empleado.EMP_NO"
+                           class="btn btn-warning">
+                            Update
+                        </a>
+                        <a asp-controller="Empleados"
+                           asp-action="Delete"
+                           asp-route-empNo="@empleado.EMP_NO"
+                           class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
