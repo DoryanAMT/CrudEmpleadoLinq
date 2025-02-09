@@ -1,4 +1,5 @@
-﻿using CrudEmpleadoLinq.Models;
+﻿using Azure.Core;
+using CrudEmpleadoLinq.Models;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
@@ -7,6 +8,7 @@ namespace CrudEmpleadoLinq.Repositories
     public class RepositoryEmpleados
     {
         DataTable tablaEmpleados;
+        DataTable tablaDepartamentos;
         SqlConnection cn;
         SqlCommand com;
         SqlDataReader reader;
@@ -17,6 +19,12 @@ namespace CrudEmpleadoLinq.Repositories
             SqlDataAdapter adEmp = new SqlDataAdapter(sql, connectionString);
             this.tablaEmpleados = new DataTable();
             adEmp.Fill(this.tablaEmpleados);
+
+            sql = "select * from DEPT";
+            SqlDataAdapter adDept = new SqlDataAdapter(sql, connectionString);
+            this.tablaDepartamentos = new DataTable();
+            adDept.Fill(this.tablaDepartamentos);
+
             //Ado
             this.cn = new SqlConnection(connectionString);
             this.com = new SqlCommand();
@@ -149,5 +157,20 @@ namespace CrudEmpleadoLinq.Repositories
             return empleados;
 
         }
+        public List<Departamento> GetDepartamentos()
+        {
+            var consulta = from datos in this.tablaDepartamentos.AsEnumerable()
+                           select datos;
+            List<Departamento> departamentos = new List<Departamento>();
+            foreach (var row in consulta)
+            {
+                Departamento departamento = new Departamento();
+                departamento.DeptNo = row.Field<int>("DEPT_NO");
+                departamento.Dnombre = row.Field<string>("DNOMBRE");
+                departamentos.Add(departamento);
+            }
+            return departamentos;
+        }
+        
     }
 }

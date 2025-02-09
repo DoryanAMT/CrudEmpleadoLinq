@@ -1,6 +1,7 @@
 ﻿using CrudEmpleadoLinq.Models;
 using CrudEmpleadoLinq.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 
 namespace CrudEmpleadoLinq.Controllers
@@ -56,6 +57,7 @@ namespace CrudEmpleadoLinq.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["DEPARTAMENTOS"] = this.repo.GetDepartamentos();
             return View();
         }
         [HttpPost]

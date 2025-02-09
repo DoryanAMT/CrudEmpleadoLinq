@@ -1,0 +1,17 @@
+﻿@model Departamento
+
+<h1>Details Departamento</h1>
+
+<a asp-controller="Departamentos"
+    asp-action="Index"
+    class="btn btn-dark">
+    Back to Index
+</a>
+
+@if(Model != null){
+    <ul class="list-group">
+        <li class="list-group-item">@Model.DeptNo</li>
+        <li class="list-group-item">@Model.Dnombre</li>
+        <li class="list-group-item">@Model.Loc</li>
+    </ul>
+}

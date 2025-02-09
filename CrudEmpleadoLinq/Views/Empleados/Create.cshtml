@@ -1,4 +1,8 @@
-﻿<h1>Create Empleado</h1>
+﻿@{
+    List<Departamento> departamentos = ViewData["DEPARTAMENTOS"] as List<Departamento>;
+}
+
+<h1>Create Empleado</h1>
 
 <a asp-controller="Empleados"
    asp-action="Index"
@@ -29,7 +33,12 @@
     <input type="text" name="COMISION"
            class="from form-control" />
     <label>DEPT NO: </label>
-    <input type="text" name="DEPT_NO"
-           class="from form-control" />
+    @* <input type="text" name="DEPT_NO"
+           class="from form-control" /> *@
+    <select name="DEPT_NO" class="form form-control">
+         @foreach(Departamento departamento in departamentos){
+             <option value="@departamento.DeptNo" >@departamento.Dnombre</option>
+         }
+    </select>
     <button class="btn btn-primary">Crear</button>
 </form>

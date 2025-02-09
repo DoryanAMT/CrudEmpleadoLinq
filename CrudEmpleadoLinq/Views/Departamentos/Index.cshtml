@@ -1,0 +1,45 @@
+﻿@model List<Departamento>
+
+<h1>Linq Departamentos</h1>
+
+@if(Model != null){
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>DEPT NO</th>
+                <th>DNOMBRE</th>
+                <th>LOC</th>
+                <th>ACCIONES</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(Departamento departamento in Model){
+                <tr>
+                    <td>@departamento.DeptNo</td>
+                    <td>@departamento.Dnombre</td>
+                    <td>@departamento.Loc</td>
+                    <td>
+                        <a asp-cotroller="Departamentos"
+                        asp-action="Details"
+                        asp-route-deptNo="@departamento.DeptNo"
+                        class="btn btn-info">
+                        Details
+                        </a>
+                        <a asp-cotroller="Departamentos"
+                           asp-action="Update"
+                           asp-route-deptNo="@departamento.DeptNo"
+                           class="btn btn-warning">
+                            Update
+                        </a>
+                        <a asp-cotroller="Departamentos"
+                           asp-action="Delete"
+                           asp-route-deptNo="@departamento.DeptNo"
+                           class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

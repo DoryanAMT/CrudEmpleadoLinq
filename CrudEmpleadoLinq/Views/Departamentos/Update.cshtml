@@ -1,0 +1,19 @@
+﻿@model Departamento
+
+<h1>Update Departamento</h1>
+
+<form method="post">
+    <label>DEPT NO: </label>
+    <input type="text" name="DeptNo"
+           value="@Model.DeptNo"
+        class="form form-control"/>
+    <label>DNOMBRE: </label>
+    <input type="text" name="Dnombre"
+           value="@Model.Dnombre"
+           class="form form-control" />
+    <label>LOC: </label>
+    <input type="text" name="Loc"
+           value="@Model.Loc"
+           class="form form-control" />
+    <button class="btn btn-warning">Actualizar</button>
+</form>
